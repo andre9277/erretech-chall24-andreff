@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import "./Register.css";
 
 /* Creates a user with a first and last name, an email and a password */
 const Register = () => {
@@ -27,41 +28,43 @@ const Register = () => {
   };
 
   return (
-    <form onSubmit={handleRegister}>
-      {/* First Name field */}
-      <label>First Name:</label>
-      <input
-        type="text"
-        placeholder="First Name"
-        value={firstName}
-        onChange={(e) => setFirstName(e.target.value)}
-      />
-      {/* Last Name field */}
-      <label>Last Name:</label>
-      <input
-        type="text"
-        placeholder="Last Name"
-        value={lastName}
-        onChange={(e) => setLastName(e.target.value)}
-      />
-      {/* Email field */}
-      <label>Email</label>
-      <input
-        type="text"
-        placeholder="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      {/* Password field */}
-      <label>Password</label>
-      <input
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button type="submit">Register</button>
-    </form>
+    <div className="container">
+      <form onSubmit={handleRegister}>
+        {/* First Name field */}
+        <label>First Name:</label>
+        <input
+          type="text"
+          placeholder="First Name"
+          value={firstName}
+          onChange={(e) => setFirstName(e.target.value)}
+        />
+        {/* Last Name field */}
+        <label>Last Name:</label>
+        <input
+          type="text"
+          placeholder="Last Name"
+          value={lastName}
+          onChange={(e) => setLastName(e.target.value)}
+        />
+        {/* Email field */}
+        <label>Email:</label>
+        <input
+          type="text"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        {/* Password field */}
+        <label>Password:</label>
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <button type="submit">Register</button>
+      </form>
+    </div>
   );
 };
 

@@ -4,7 +4,7 @@ import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 
 function App() {
-  //state that keeps track if the user is logged in or not
+  //State that keeps track if the user is logged in or not
   const [isLog, setIsLog] = useState(true);
 
   const toggleLog = () => {
@@ -15,12 +15,16 @@ function App() {
   return (
     <>
       <div>
-        <h1>{isLog ? "Login" : "Register"}</h1>
+        <h1 className="main-page">{isLog ? "Login Page" : "Register Page"}</h1>
         {isLog ? <Login /> : <Register />}
-        <button onClick={toggleLog}>
-          {" "}
-          {isLog ? "Go to Register" : "Go to Login"}{" "}
-        </button>
+        <div className="btn-redirect">
+          <button onClick={toggleLog}>
+            {" "}
+            {isLog
+              ? "Don't have an account? Register here!"
+              : "Already have an account. Click here!"}{" "}
+          </button>
+        </div>
       </div>
     </>
   );
