@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import axios from "axios"; //axios library to handle api calls
 
 const Login = () => {
@@ -7,6 +7,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
 
   const handleLogin = async (e) => {
+    //to prevent the page to refresh
     e.preventDefault();
     try {
       const resp = await axios.post(
