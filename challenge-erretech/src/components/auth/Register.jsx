@@ -10,6 +10,9 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  //State to handle login errors
+  const [error, setError] = useState(null);
+
   //Handles the submit of the user register
   const handleRegister = async (e) => {
     // so the page does not refresh
@@ -23,12 +26,13 @@ const Register = () => {
       console.log(resp.data);
     } catch (error) {
       //if the response is not successful
-      console.error(error.response.data);
+      setError("Invalid email or password. Please try again.");
     }
   };
 
   return (
     <div className="container">
+      <h1 className="title-reg">Register Page</h1>
       <form onSubmit={handleRegister}>
         {/* First Name field */}
         <label>First Name:</label>
@@ -63,6 +67,8 @@ const Register = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
         <button type="submit">Register</button>
+        {/*Display error message if there's an error */}
+        {error && <p className="error-message">{error}</p>}
       </form>
     </div>
   );

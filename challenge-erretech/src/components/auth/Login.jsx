@@ -1,11 +1,17 @@
 import { useState } from "react";
 import axios from "axios"; //Axios library to handle api calls
 import "./Login.css";
+import { Navigate } from "react-router-dom";
 
-const Login = () => {
+const Login = ({ isLog }) => {
   //Attributes to save and handle information about the user
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  //State to know if the user is logged in or logged out
+  //----const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  //State to handle login errors
+  const [error, setError] = useState(null);
 
   const handleLogin = async (e) => {
     //To prevent the page to refresh
@@ -18,16 +24,24 @@ const Login = () => {
       //console.log(resp); -> check the response from the postman
       //if the login is successful
       console.log(resp.data);
+      //setIsLoggedIn(true);
     } catch (error) {
       //if the login finds some error
-      console.error(error.resp.data);
+      setError("Invalid email or password. Please try again.");
     }
   };
 
+  //If the user is able to login, go to dashboard component
+  console.log(isLog);
+  if (isLog === true) {
+    return <Navigate to="/dashboard" />;
+  }
+
   return (
     <div className="container">
+      <h1 className="title-log">Login Page</h1>
       <form onSubmit={handleLogin}>
-        {/* Email field */}
+        {/*Email field */}
         <label>Email:</label>
         <input
           type="email"
@@ -35,7 +49,7 @@ const Login = () => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        {/* Password field */}
+        {/*Password field */}
         <label>Password:</label>
         <input
           type="password"
@@ -43,8 +57,11 @@ const Login = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        {/* Button to login  */}
+        {/*Button to login  */}
         <button type="submit">Login</button>
+
+        {/*Display error message if there's an error */}
+        {error && <p className="error-message">{error}</p>}
       </form>
     </div>
   );

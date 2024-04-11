@@ -2,6 +2,8 @@ import { useState } from "react";
 import "./App.css";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Dashboard from "./components/Dashboard";
 
 function App() {
   //State that keeps track if the user is logged in or not
@@ -12,11 +14,19 @@ function App() {
     setIsLog(!isLog);
   };
 
+  const handleLoginStatus = () => {
+    setIsLog(true);
+  };
+
   return (
-    <>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/login" element={<Login isLog={isLog} />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+      </Routes>
       <div>
-        <h1 className="main-page">{isLog ? "Login Page" : "Register Page"}</h1>
-        {isLog ? <Login /> : <Register />}
+        {isLog ? <Login onLogin={handleLoginStatus} /> : <Register />}
         <div className="btn-redirect">
           <button onClick={toggleLog}>
             {" "}
@@ -26,7 +36,7 @@ function App() {
           </button>
         </div>
       </div>
-    </>
+    </BrowserRouter>
   );
 }
 
