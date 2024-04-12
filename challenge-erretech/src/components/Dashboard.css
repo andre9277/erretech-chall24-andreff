@@ -1,0 +1,9 @@
+.dashboard {
+  display: flex;
+}
+
+.mn-dash {
+  flex: 1;
+  padding: 20px;
+  background-color: #fff;
+}

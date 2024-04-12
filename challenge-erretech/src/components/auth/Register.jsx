@@ -85,7 +85,9 @@ const Register = () => {
         {error && <p className="error-message">{error}</p>}
       </form>
       {/*Link to navigate to the login page */}
-      <Link to="/">Already have an account? Login here</Link>
+      <div className="lk-reg">
+        <Link to="/">Already have an account? Login here</Link>
+      </div>
     </div>
   );
 };

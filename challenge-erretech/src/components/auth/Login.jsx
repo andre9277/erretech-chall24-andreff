@@ -14,6 +14,9 @@ const Login = () => {
   //State to manage redirection
   const [redirectToDashboard, setRedirectToDashboard] = useState(false);
 
+  //State to manage login/logout permissions
+  const [token, setToken] = useState("");
+
   const handleLogin = async (e) => {
     //To prevent the page to refresh
     e.preventDefault();
@@ -31,6 +34,11 @@ const Login = () => {
         //Set state to trigger redirection
         setRedirectToDashboard(true);
       }
+
+      //Saves the token
+      setToken(resp.data.token);
+      console.log("resp.data.token", resp.data.token);
+      // Call the callback function passed from the parent component
     } catch (error) {
       //if the login finds some error
       setError("Invalid email or password. Please try again.");
@@ -70,7 +78,9 @@ const Login = () => {
       </form>
 
       {/*Link to navigate to the register page */}
-      <Link to="/register">Go to Register</Link>
+      <div className="lk-reg">
+        <Link to="/register">Go to Register</Link>
+      </div>
     </div>
   );
 };

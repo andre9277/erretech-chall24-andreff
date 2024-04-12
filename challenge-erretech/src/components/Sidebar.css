@@ -1,0 +1,30 @@
+.sidebar {
+  background-color: #f4f4f4;
+  padding: 20px;
+  width: 200px;
+}
+
+.sidebar-tit {
+  font-size: 20px;
+  margin-bottom: 10px;
+  margin-top: 15px;
+}
+
+.sidebar-lst {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar-itm {
+  margin-bottom: 10px;
+  margin-left: 20px;
+}
+
+.sidebar-lk {
+  color: #333;
+  text-decoration: none;
+}
+
+.sidebar-lk:hover {
+  color: #666;
+}
