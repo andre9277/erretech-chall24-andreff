@@ -1,17 +1,18 @@
 import { useState } from "react";
 import axios from "axios"; //Axios library to handle api calls
 import "./Login.css";
-import { Navigate } from "react-router-dom";
+import { Navigate, Link } from "react-router-dom";
 
-const Login = ({ isLog }) => {
+const Login = () => {
   //Attributes to save and handle information about the user
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  //State to know if the user is logged in or logged out
-  //----const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   //State to handle login errors
   const [error, setError] = useState(null);
+
+  //State to manage redirection
+  const [redirectToDashboard, setRedirectToDashboard] = useState(false);
 
   const handleLogin = async (e) => {
     //To prevent the page to refresh
@@ -22,18 +23,22 @@ const Login = ({ isLog }) => {
         { email, password }
       );
       //console.log(resp); -> check the response from the postman
-      //if the login is successful
+      //If the login is successful
       console.log(resp.data);
-      //setIsLoggedIn(true);
+
+      //If the message from the backend is OK, go to dashboard
+      if (resp.data.message === "OK") {
+        //Set state to trigger redirection
+        setRedirectToDashboard(true);
+      }
     } catch (error) {
       //if the login finds some error
       setError("Invalid email or password. Please try again.");
     }
   };
 
-  //If the user is able to login, go to dashboard component
-  console.log(isLog);
-  if (isLog === true) {
+  //Redirects to the dashboard component:
+  if (redirectToDashboard) {
     return <Navigate to="/dashboard" />;
   }
 
@@ -63,6 +68,9 @@ const Login = ({ isLog }) => {
         {/*Display error message if there's an error */}
         {error && <p className="error-message">{error}</p>}
       </form>
+
+      {/*Link to navigate to the register page */}
+      <Link to="/register">Go to Register</Link>
     </div>
   );
 };
