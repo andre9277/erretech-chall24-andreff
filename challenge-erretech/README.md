@@ -1,8 +1,9 @@
-# React + Vite
+Érre Technology - Challenge ‘24
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Build a Client Manager application using React.js, integrated with the provided backend API for authentication only. The application should allow employees to manage client contacts, information, client needs, events, and important start/end dates.
 
-Currently, two official plugins are available:
+Requirements:
+Authentication Integration:
+Download the provided Postman collection, and use the provided authentication endpoints for the users management, implementing functionality for users to Login and Register. Only “login” and “create-user” are mandatory, the rest is optional.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Build with: React + Vite

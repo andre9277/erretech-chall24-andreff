@@ -1,3 +1,7 @@
+/* Érre Technology - Challenge ‘24
+Made by: André Ferreira 
+Date: 12/04/2024*/
+
 import "./App.css";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";

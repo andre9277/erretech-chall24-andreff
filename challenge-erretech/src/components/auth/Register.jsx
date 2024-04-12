@@ -1,3 +1,7 @@
+/* Érre Technology - Challenge ‘24
+Made by: André Ferreira 
+Date: 12/04/2024*/
+
 import { useState } from "react";
 import axios from "axios";
 import "./Register.css";
